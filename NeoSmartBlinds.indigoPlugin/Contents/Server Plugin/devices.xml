@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+
+<Devices>
+	<!-- This custom device illustrates how a plugin can update custom device
+	states which can be used in Device State Changed triggers, conditionals,
+	and inspected on Control Pages. The python runConcurrentThread() method
+	will update the states every second.
+	-->
+	<Device type="custom" id="controller">
+		<Name>Neo Smart Controller</Name>
+		<ConfigUI>
+			<Field id="devIP" type="textfield">
+				<Label>Controller IP:</Label>
+			</Field>
+			<Field id="devPort" type="textfield" defaultValue="8838">
+				<Label>Controller Port:</Label>
+			</Field>
+			<Field id="devCtrlID" type="textfield">
+				<Label>Controller ID:</Label>
+			</Field>
+		</ConfigUI>
+		<States>
+			<State id="devIP">
+				<ValueType>String</ValueType>
+				<TriggerLabel>IP Address</TriggerLabel>
+				<ControlPageLabel>IP Address</ControlPageLabel>
+			</State>
+		</States>
+		<UiDisplayStateId>devIP</UiDisplayStateId>
+	</Device>
+
+
+	<Device type="custom" id="blind">
+		<Name>Neo Smart Blind</Name>
+		<ConfigUI>
+			<Field id="devID1" type="textfield">
+				<Label>Blind ID1 (xxx):</Label>
+			</Field>
+			<Field id="devID1" type="textfield">
+				<Label>Blind ID2 (yyy):</Label>
+			</Field>
+			<Field id="devCh" type="textfield">
+				<Label>Blind Channel (nn):</Label>
+			</Field>
+		</ConfigUI>
+				<States>
+			<State id="devAddress">
+				<ValueType>String</ValueType>
+				<TriggerLabel>Address</TriggerLabel>
+				<ControlPageLabel>Address</ControlPageLabel>
+			</State>
+		</States>
+		<UiDisplayStateId>devAddress</UiDisplayStateId>
+	</Device>
+
+</Devices>

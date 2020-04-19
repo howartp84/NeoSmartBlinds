@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<Actions>
+	<Action id="up" deviceFilter="self.motor">
+		<Name>Blind Up</Name>
+		<CallbackMethod>sendCmd</CallbackMethod>
+	</Action>
+	
+	<Action id="dn" deviceFilter="self.motor">
+		<Name>Blind Down</Name>
+		<CallbackMethod>sendCmd</CallbackMethod>
+	</Action>
+	
+	<Action id="sp" deviceFilter="self.motor">
+		<Name>Blind Stop</Name>
+		<CallbackMethod>sendCmd</CallbackMethod>
+	</Action>
+	
+	<Action id="gp" deviceFilter="self.motor">
+		<Name>Blind to Favourite</Name>
+		<CallbackMethod>sendCmd</CallbackMethod>
+	</Action>
+	
+</Actions>

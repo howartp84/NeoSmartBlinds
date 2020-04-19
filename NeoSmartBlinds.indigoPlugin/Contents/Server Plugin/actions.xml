@@ -1,21 +1,21 @@
 <?xml version="1.0"?>
 <Actions>
-	<Action id="up" deviceFilter="self.motor">
+	<Action id="up" deviceFilter="self.blind">
 		<Name>Blind Up</Name>
 		<CallbackMethod>sendCmd</CallbackMethod>
 	</Action>
 	
-	<Action id="dn" deviceFilter="self.motor">
+	<Action id="dn" deviceFilter="self.blind">
 		<Name>Blind Down</Name>
 		<CallbackMethod>sendCmd</CallbackMethod>
 	</Action>
 	
-	<Action id="sp" deviceFilter="self.motor">
+	<Action id="sp" deviceFilter="self.blind">
 		<Name>Blind Stop</Name>
 		<CallbackMethod>sendCmd</CallbackMethod>
 	</Action>
 	
-	<Action id="gp" deviceFilter="self.motor">
+	<Action id="gp" deviceFilter="self.blind">
 		<Name>Blind to Favourite</Name>
 		<CallbackMethod>sendCmd</CallbackMethod>
 	</Action>

@@ -36,7 +36,7 @@
 			<Field id="devID1" type="textfield">
 				<Label>Blind ID1 (xxx):</Label>
 			</Field>
-			<Field id="devID1" type="textfield">
+			<Field id="devID2" type="textfield">
 				<Label>Blind ID2 (yyy):</Label>
 			</Field>
 			<Field id="devCh" type="textfield">

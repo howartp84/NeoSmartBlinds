@@ -59,12 +59,15 @@ class Plugin(indigo.PluginBase):
 		return True
 
 	def deviceStartComm(self, dev):
-		#dev.stateListOrDisplayStateIdChanged()
-		if (dev.deviceTypeId == "mylink"):
-			devIP = dev.ownerProps['devIP']
-			devPort = dev.ownerProps['devPort']
-			devAuth = dev.ownerProps['devAuth']
-			connTimeout = dev.ownerProps['connTimeout']
+		#self.debugLog(str(dev.deviceTypeId))
+		if (str(dev.deviceTypeId) == "controller"):
+			devIP = dev.ownerProps["devIP"]
+			devPort = dev.ownerProps["devPort"]
+			devCtrlID = dev.ownerProps["devCtrlID"]
+			dev.stateListOrDisplayStateIdChanged()
+			dev.updateStateOnServer("devIP",devIP)
+			self.baseURL = str("http://" + devIP + ":" + devPort + "/neo/v1/transmit?command=XYZ" + "&id=" + devCtrlID)
+			self.debugLog(self.baseURL)
 			
 	def sendCmd(self, pluginAction):
 		self.debugLog("sendCmd action called:")
@@ -87,3 +90,5 @@ class Plugin(indigo.PluginBase):
 
 		self.debugLog("URL sent was: %s" % response.URL)
 		self.debugLog("Controller responded: %s" % response.text)
+		
+		#self.debugLog(response)

@@ -11,13 +11,37 @@
 	</Action>
 	
 	<Action id="sp" deviceFilter="self.blind">
-		<Name>Blind Stop</Name>
+		<Name>Stop blind</Name>
 		<CallbackMethod>sendCmd</CallbackMethod>
 	</Action>
 	
 	<Action id="gp" deviceFilter="self.blind">
-		<Name>Blind to Favourite</Name>
+		<Name>Move Blind to Favourite</Name>
 		<CallbackMethod>sendCmd</CallbackMethod>
 	</Action>
+	
+	<Action id="sep1" />
+	
+	<Action id="mu" deviceFilter="self.blind">
+		<Name>Raise blind one step</Name>
+		<CallbackMethod>sendCmd</CallbackMethod>
+	</Action>
+	
+	<Action id="md" deviceFilter="self.blind">
+		<Name>Lower blind one step</Name>
+		<CallbackMethod>sendCmd</CallbackMethod>
+	</Action>
+	
+	<!--Action id="sep2" />
+	
+	<Action id="toPos" deviceFilter="self.blind">
+		<Name>Move blind to specific position</Name>
+		<ConfigUI>
+			<Field type="textfield" id="position">
+				<Label>Numeric position 01-99:</Label>
+			</Field>
+		</ConfigUI>
+		<CallbackMethod>sendCmdPos</CallbackMethod>
+	</Action>-->
 	
 </Actions>

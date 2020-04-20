@@ -6,9 +6,6 @@
 
 import indigo
 
-import os
-import subprocess
-
 import requests
 
 # Note the "indigo" module is automatically imported and made available inside
@@ -42,18 +39,14 @@ class Plugin(indigo.PluginBase):
 			if (str(typeId) == "controller"):
 				dev = indigo.devices[devId]
 				devIP = valuesDict["devIP"]
-				devPort = valuesDict["devPort"]
 				devCtrlID = valuesDict["devCtrlID"]
 				dev.stateListOrDisplayStateIdChanged()
 				dev.updateStateOnServer("devIP",devIP)
-				self.baseURL = str("http://" + devIP + ":" + devPort + "/neo/v1/transmit?command=XYZ" + "&id=" + devCtrlID)
+				self.baseURL = str("http://" + devIP + ":8838/neo/v1/transmit?command=XYZ" + "&id=" + devCtrlID)
 				self.debugLog(self.baseURL)
 			if (str(typeId) == "blind"):
 				dev = indigo.devices[devId]
-				id1 = valuesDict["devID1"]
-				id2 = valuesDict["devID2"]
-				devCh = valuesDict["devCh"]
-				devAddress = str(id1) + "." + str(id2) + "-" + str(devCh)
+				devAddress = valuesDict["blindID"]
 				dev.stateListOrDisplayStateIdChanged()
 				dev.updateStateOnServer("devAddress",devAddress)
 		return True
@@ -62,11 +55,10 @@ class Plugin(indigo.PluginBase):
 		#self.debugLog(str(dev.deviceTypeId))
 		if (str(dev.deviceTypeId) == "controller"):
 			devIP = dev.ownerProps["devIP"]
-			devPort = dev.ownerProps["devPort"]
 			devCtrlID = dev.ownerProps["devCtrlID"]
 			dev.stateListOrDisplayStateIdChanged()
 			dev.updateStateOnServer("devIP",devIP)
-			self.baseURL = str("http://" + devIP + ":" + devPort + "/neo/v1/transmit?command=XYZ" + "&id=" + devCtrlID)
+			self.baseURL = str("http://" + devIP + ":8838/neo/v1/transmit?command=XYZ" + "&id=" + devCtrlID)
 			self.debugLog(self.baseURL)
 			
 	def sendCmd(self, pluginAction):
@@ -88,7 +80,7 @@ class Plugin(indigo.PluginBase):
 
 		response = requests.get(cmdURL)
 
-		self.debugLog("URL sent was: %s" % response.URL)
-		self.debugLog("Controller responded: %s" % response.text)
+		#self.debugLog("URL sent was: %s" % response.URL)
+		#self.debugLog("Controller responded: %s" % response.text)
 		
-		#self.debugLog(response)
+		self.debugLog(str(response))

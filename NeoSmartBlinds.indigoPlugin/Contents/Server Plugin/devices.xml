@@ -10,14 +10,14 @@
 		<Name>Neo Smart Controller</Name>
 		<ConfigUI>
 			<Field id="devIP" type="textfield">
-				<Label>Controller IP:</Label>
-			</Field>
-			<Field id="devPort" type="textfield" defaultValue="8838">
-				<Label>Controller Port:</Label>
+				<Label>Controller IP Address:</Label>
 			</Field>
 			<Field id="devCtrlID" type="textfield">
 				<Label>Controller ID:</Label>
 			</Field>
+			<Field id="label1" type="label">
+        <Label>Controller ID is 24 characters and can be found in the Neo App.</Label>
+    </Field>
 		</ConfigUI>
 		<States>
 			<State id="devIP">
@@ -29,19 +29,21 @@
 		<UiDisplayStateId>devIP</UiDisplayStateId>
 	</Device>
 
-
 	<Device type="custom" id="blind">
-		<Name>Neo Smart Blind</Name>
+		<Name>Neo Blind</Name>
 		<ConfigUI>
-			<Field id="devID1" type="textfield">
-				<Label>Blind ID1 (xxx):</Label>
+			<Field id="blindID" type="textfield">
+				<Label>Blind or Room Code (eg 036.002.01):</Label>
 			</Field>
-			<Field id="devID2" type="textfield">
-				<Label>Blind ID2 (yyy):</Label>
-			</Field>
-			<Field id="devCh" type="textfield">
-				<Label>Blind Channel (nn):</Label>
-			</Field>
+			<Field id="label2" type="label">
+        <Label>This can be found in the Neo App under Advanced Controls.</Label>
+    	</Field>
+    	<Field id="label3" type="label">
+        <Label></Label>
+    	</Field>
+    	<Field id="label4" type="label">
+        <Label>Entering a Room Code will operate all blinds in this room as configured in the App.</Label>
+    	</Field>
 		</ConfigUI>
 				<States>
 			<State id="devAddress">

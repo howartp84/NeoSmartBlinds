@@ -33,7 +33,7 @@
 		<Name>Neo Blind</Name>
 		<ConfigUI>
 			<Field id="blindID" type="textfield">
-				<Label>Blind or Room Code (eg 036.002.01):</Label>
+				<Label>Blind or Room Code (eg 036.002-01):</Label>
 			</Field>
 			<Field id="label2" type="label">
         <Label>This can be found in the Neo App under Advanced Controls.</Label>

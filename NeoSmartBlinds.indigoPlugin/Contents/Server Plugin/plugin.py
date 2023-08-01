@@ -18,7 +18,7 @@ class Plugin(indigo.PluginBase):
 	def __init__(self, pluginId, pluginDisplayName, pluginVersion, pluginPrefs):
 		super(Plugin, self).__init__(pluginId, pluginDisplayName, pluginVersion, pluginPrefs)
 		self.debug = pluginPrefs.get("showDebugInfo", False)
-		
+
 		self.baseURL = ""
 
 	########################################
@@ -30,9 +30,9 @@ class Plugin(indigo.PluginBase):
 		if not userCancelled:
 			self.debug = valuesDict.get("showDebugInfo", False)
 			if self.debug:
-				indigo.server.log("Debug logging enabled")
+				indigo.server.log(u"Debug logging enabled")
 			else:
-				indigo.server.log("Debug logging disabled")
+				indigo.server.log(u"Debug logging disabled")
 
 	def closedDeviceConfigUi(self, valuesDict, userCancelled, typeId, devId):
 		if not userCancelled:
@@ -43,7 +43,7 @@ class Plugin(indigo.PluginBase):
 				dev.stateListOrDisplayStateIdChanged()
 				dev.updateStateOnServer("devIP",devIP)
 				self.baseURL = str("http://" + devIP + ":8838/neo/v1/transmit?command=XYZ" + "&id=" + devCtrlID)
-				self.debugLog(self.baseURL)
+				self.debugLog(u"{}".format(self.baseURL))
 			if (str(typeId) == "blind"):
 				dev = indigo.devices[devId]
 				devAddress = valuesDict["blindID"]
@@ -59,28 +59,28 @@ class Plugin(indigo.PluginBase):
 			dev.stateListOrDisplayStateIdChanged()
 			dev.updateStateOnServer("devIP",devIP)
 			self.baseURL = str("http://" + devIP + ":8838/neo/v1/transmit?command=XYZ" + "&id=" + devCtrlID)
-			self.debugLog(self.baseURL)
-			
+			self.debugLog(u"{}".format(self.baseURL))
+
 	def sendCmd(self, pluginAction):
-		self.debugLog("sendCmd action called:")
+		self.debugLog(u"sendCmd action called:")
 		#self.debugLog(str(pluginAction))
 		blindID = pluginAction.deviceId
 		blindAddress = indigo.devices[int(blindID)].states["devAddress"]
-		
+
 		cmdAction = str(pluginAction.pluginTypeId)
 
-		self.debugLog("Blind: " + str(blindAddress))
-		self.debugLog("Action: " + str(cmdAction))
+		self.debugLog(u"Blind: {}".format(blindAddress))
+		self.debugLog(u"Action: {}".format(cmdAction))
 
 		cmdString = blindAddress + "-" + cmdAction
 
 		cmdURL = self.baseURL.replace("XYZ",cmdString)
-		
-		self.debugLog("Sending URL: " + str(cmdURL))
+
+		self.debugLog(u"Sending URL: {}".format(cmdURL))
 
 		response = requests.get(cmdURL)
 
-		#self.debugLog("URL sent was: %s" % response.URL)
-		#self.debugLog("Controller responded: %s" % response.text)
-		
-		self.debugLog(str(response))
+		#self.debugLog(u"URL sent was: {}".format(response.URL))
+		#self.debugLog(u"Controller responded: {}".format(response.text))
+
+		self.debugLog(u"{}".format(response))
